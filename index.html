@@ -29,15 +29,21 @@
             box-shadow: 0 5px 20px rgba(0, 255, 0, 0.4); 
         }
 
+        /* Estilos del Carrusel */
         .carousel-container { position: relative; overflow: hidden; border-radius: 1rem; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1); }
-        .slide { display: none; min-height: 600px; background-size: cover; background-position: center; }
+        .slide { display: none; min-height: 600px; background-size: cover; background-position: center; transition: opacity 0.8s ease-in-out; }
         .slide.active { display: flex; align-items: flex-end; }
         
-        .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: all 0.3s ease; cursor: pointer; }
         .dot.active { background: var(--primary); width: 24px; border-radius: 4px; }
 
         .brand-name { text-transform: none !important; font-family: ui-sans-serif, system-ui, sans-serif; }
-        .qr-card { background: linear-gradient(145deg, #111, #000); border: 1px solid rgba(0, 255, 0, 0.1); }
+        input::placeholder { color: #52525b; }
+        
+        .qr-card {
+            background: linear-gradient(145deg, #111, #000);
+            border: 1px solid rgba(0, 255, 0, 0.1);
+        }
     </style>
 </head>
 <body class="bg-studio text-gray-100 font-sans antialiased">
@@ -46,46 +52,50 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-6 bg-primary"></div>
+                    <div class="w-10 h-6 bg-primary shadow-[0_0_10px_rgba(0,255,0,0.3)]"></div>
                     <div class="flex flex-col leading-tight">
-                        <span class="text-xl font-extrabold text-white brand-name">Green Screen</span>
-                        <span class="text-xl font-extrabold text-white brand-name">Monterrey<span class="text-[8px] align-top ml-0.5">TM</span></span>
+                        <span class="text-xl font-extrabold tracking-tight text-white brand-name">Green Screen</span>
+                        <span class="text-xl font-extrabold tracking-tight text-white flex items-center brand-name">Monterrey<span class="text-[8px] align-top ml-0.5">TM</span></span>
                     </div>
                 </div>
-                <nav class="hidden md:flex space-x-8 text-[10px] uppercase font-black">
-                    <a href="#inicio" class="hover:text-primary">GSMty</a>
-                    <a href="#promo" class="text-primary italic">Agenda ahora</a>
-                    <a href="#contacto" class="border border-white/20 px-4 py-1.5 rounded-full">Contacto</a>
+                <nav class="hidden md:flex space-x-8 text-[10px] uppercase font-black tracking-[0.25em]">
+                    <a href="#inicio" class="hover:text-primary transition-colors">GSMty</a>
+                    <a href="#promo" class="text-primary hover:text-white transition-colors italic">Agenda ahora</a>
+                    <a href="#contacto" class="hover:text-primary transition-colors border border-white/20 px-4 py-1.5 rounded-full">Contacto</a>
                 </nav>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="inicio" class="pt-28 pb-12 px-4 max-w-7xl mx-auto">
+        <section id="inicio" class="pt-28 pb-12 px-4 max-w-7xl mx-auto text-left">
             <div class="carousel-container shadow-2xl relative">
+                
                 <div class="slide active p-8 md:p-20" style="background-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%), url('img/Wallpaper.jpg');">
-                    <div class="max-w-2xl relative z-10 text-left">
-                        <h1 class="text-5xl md:text-8xl font-black mb-6 uppercase italic tracking-tighter">Estudio <br><span class="text-primary green-neon-glow">Pop Up</span></h1>
-                        <p class="text-zinc-400 font-bold text-[10px] uppercase italic border-l-2 border-primary pl-4">Llevamos la producción a tu evento</p>
+                    <div class="max-w-2xl relative z-10">
+                        <h1 class="text-5xl md:text-8xl font-black mb-6 uppercase leading-[0.85] italic tracking-tighter">Estudio <br><span class="text-primary green-neon-glow">Pop Up</span></h1>
+                        <p class="text-zinc-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase italic border-l-2 border-primary pl-4">Llevamos la producción a tu evento</p>
                     </div>
                 </div>
+                
                 <div class="slide p-8 md:p-20" style="background-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%), url('img/carrusel_02.webp');">
-                    <div class="max-w-2xl relative z-10 text-left">
-                        <h2 class="text-5xl md:text-8xl font-black mb-6 uppercase italic tracking-tighter">Completamente <br><span class="text-primary green-neon-glow">Personalizable</span></h2>
-                        <p class="text-zinc-400 font-bold text-[10px] uppercase italic border-l-2 border-primary pl-4">Tus fondos, tu marca, tu estilo</p>
+                    <div class="max-w-2xl relative z-10">
+                        <h2 class="text-5xl md:text-8xl font-black mb-6 uppercase leading-[0.85] italic tracking-tighter">Completamente <br><span class="text-primary green-neon-glow">Personalizable</span></h2>
+                        <p class="text-zinc-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase italic border-l-2 border-primary pl-4">Tus fondos, tu marca, tu estilo</p>
                     </div>
                 </div>
+
                 <div class="slide p-8 md:p-20" style="background-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%), url('img/carrusel_03.webp');">
-                    <div class="max-w-2xl relative z-10 text-left">
-                        <h2 class="text-5xl md:text-8xl font-black mb-6 uppercase italic tracking-tighter">Recuerdos en <br><span class="text-primary green-neon-glow">Foto y Video</span></h2>
-                        <p class="text-zinc-400 font-bold text-[10px] uppercase italic border-l-2 border-primary pl-4">Momentos capturados para siempre</p>
+                    <div class="max-w-2xl relative z-10">
+                        <h2 class="text-5xl md:text-8xl font-black mb-6 uppercase leading-[0.85] italic tracking-tighter">Recuerdos en <br><span class="text-primary green-neon-glow">Foto y Video</span></h2>
+                        <p class="text-zinc-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase italic border-l-2 border-primary pl-4">Momentos capturados para siempre</p>
                     </div>
                 </div>
+
                 <div class="slide p-8 md:p-20" style="background-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%), url('img/carrusel_04.webp');">
-                    <div class="max-w-2xl relative z-10 text-left">
-                        <h2 class="text-5xl md:text-8xl font-black mb-6 uppercase italic tracking-tighter">Vivir la <br><span class="text-primary green-neon-glow">Experiencia</span></h2>
-                        <p class="text-zinc-400 font-bold text-[10px] uppercase italic border-l-2 border-primary pl-4">Adéntrate en la magia del evento</p>
+                    <div class="max-w-2xl relative z-10">
+                        <h2 class="text-5xl md:text-8xl font-black mb-6 uppercase leading-[0.85] italic tracking-tighter">Vivir la <br><span class="text-primary green-neon-glow">Experiencia</span></h2>
+                        <p class="text-zinc-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase italic border-l-2 border-primary pl-4">Adéntrate en la magia del evento</p>
                     </div>
                 </div>
 
@@ -97,17 +107,33 @@
                 </div>
 
                 <div class="absolute bottom-8 right-8 flex gap-3 z-20">
-                    <button onclick="moveSlide(-1)" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:text-black transition-all"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button onclick="moveSlide(1)" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:text-black transition-all"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button onclick="moveSlide(-1)" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:text-black transition-all">
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <button onclick="moveSlide(1)" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:text-black transition-all">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
                 </div>
             </div>
         </section>
 
-        <section id="promo" class="py-24 bg-zinc-950 px-6">
-            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        <section class="py-12 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between border-y border-white/5 py-10 gap-8">
+                <div class="text-left">
+                    <h3 class="text-2xl font-black italic uppercase tracking-tighter text-white">Siempre generando nuevos mundos</h3>
+                    <p class="text-zinc-500 text-xs uppercase tracking-widest mt-2">Síguenos en Instagram para nuestro portafolio diario</p>
+                </div>
+                <a href="https://www.instagram.com/greenscreenmonterrey/" target="_blank" class="flex items-center gap-4 bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest text-white hover:scale-105 transition-transform">
+                    <i class="fa-brands fa-instagram text-xl"></i> @greenscreenmonterrey
+                </a>
+            </div>
+        </section>
+
+        <section id="promo" class="py-24 bg-zinc-950">
+            <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
                 <div class="text-left">
                     <h2 class="text-4xl md:text-5xl font-black uppercase mb-8 italic">Cuéntanos de <br><span class="text-primary">tu evento</span></h2>
-                    <p class="text-zinc-500 mb-10 text-lg">Recibe una propuesta a tu medida.</p>
+                    <p class="text-zinc-500 mb-10 text-lg leading-relaxed">Información personalizada y propuesta a tu medida.</p>
                 </div>
                 <div class="bg-black border border-white/10 p-10 rounded-3xl">
                     <form id="google-sheet-form" class="space-y-5">
@@ -129,8 +155,8 @@
         </section>
     </main>
 
-    <footer id="contacto" class="bg-black py-20 border-t border-white/5 px-6">
-        <div class="max-w-7xl mx-auto">
+    <footer id="contacto" class="bg-black py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-3 gap-12 items-center text-center md:text-left">
                 <div>
                     <div class="flex items-center gap-3 justify-center md:justify-start mb-6">
@@ -142,14 +168,15 @@
 
                 <div class="flex flex-col items-center">
                     <div class="qr-card p-4 rounded-2xl mb-4 shadow-lg">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/528140159100" class="w-32 h-32" alt="WhatsApp QR">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/528140159100" class="w-32 h-32" alt="QR">
                     </div>
-                    <p class="text-[9px] font-black text-primary uppercase">Escanea para WhatsApp</p>
+                    <p class="text-[9px] font-black text-primary uppercase tracking-[0.2em]">Escanea para WhatsApp</p>
                 </div>
 
                 <div class="flex flex-col md:items-end gap-6">
                     <div class="flex justify-center gap-6">
                         <a href="https://www.instagram.com/greenscreenmonterrey/" target="_blank" class="text-zinc-500 hover:text-primary text-2xl"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/528140159100" target="_blank" class="text-zinc-500 hover:text-primary text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                     <p class="text-[8px] text-zinc-900 font-black uppercase tracking-[0.6em]">&copy; 2025 Green Screen Monterrey</p>
                 </div>
@@ -171,20 +198,17 @@
         }
 
         function moveSlide(step) {
-            currentSlideIndex = (currentSlideIndex + step + slides.length) % slides.length;
-            updateCarousel(currentSlideIndex);
+            let next = (currentSlideIndex + step + slides.length) % slides.length;
+            updateCarousel(next);
         }
 
-        function currentSlideTo(index) {
-            updateCarousel(index);
-        }
+        function currentSlideTo(index) { updateCarousel(index); }
 
         setInterval(() => moveSlide(1), 5000);
 
         // Formulario
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwwyek8kRKmb7MmnEZpLqYIWuPf7XkKDS3NkfLFNHK0Q2440t7I598RItsepZ1bhby9Lg/exec'; 
         const form = document.getElementById('google-sheet-form');
-        const status = document.getElementById('form-status');
         const btn = document.getElementById('submit-btn');
 
         form.addEventListener('submit', e => {
@@ -193,9 +217,8 @@
             btn.disabled = true;
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(() => {
-                status.innerText = "✓ REGISTRO EXITOSO";
-                status.classList.remove('hidden');
-                status.classList.add('text-primary');
+                document.getElementById('form-status').innerText = "✓ REGISTRO EXITOSO";
+                document.getElementById('form-status').classList.remove('hidden');
                 form.reset();
                 btn.innerText = "REGISTRAR";
                 btn.disabled = false;
