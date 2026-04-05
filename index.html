@@ -3,97 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Screen Monterrey | Video 4K en Tiempo Real</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Green Screen Monterrey | Studio & Entertainment</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%2300FF00%22/></svg>">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --neon: #39FF14; --dark: #0a0a0a; --card: #161616; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: var(--dark); color: white; line-height: 1.6; }
+        html { scroll-behavior: smooth; }
+        :root { --primary: #00FF00; }
+        .bg-studio { background-color: #000000; }
+        .text-primary { color: var(--primary); }
+        .bg-primary { background-color: var(--primary); }
+        .green-neon-glow { text-shadow: 0 0 15px rgba(0, 255, 0, 0.4); }
         
-        /* Header & Hero */
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%); }
-        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1; margin-bottom: 20px; text-transform: uppercase; }
-        h1 span { color: var(--neon); text-shadow: 0 0 20px rgba(57, 255, 20, 0.5); }
-        .tagline { font-size: 1.2rem; color: #ccc; max-width: 600px; margin-bottom: 40px; }
+        .btn-green { 
+            background-color: var(--primary); 
+            color: #000000;
+            transition: all 0.3s ease; 
+            font-weight: 900;
+        }
+        .btn-green:hover { 
+            background-color: #00cc00; 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 0, 0.4); 
+        }
 
-        /* Carrusel de Backgrounds */
-        .carousel-container { width: 100%; max-width: 900px; margin: 40px auto; overflow: hidden; border: 2px solid var(--neon); border-radius: 15px; position: relative; }
-        .carousel-track { display: flex; animation: scroll 20s linear infinite; }
-        .carousel-track img { width: 300px; height: 200px; object-fit: cover; flex-shrink: 0; filter: grayscale(50%); transition: 0.3s; }
-        .carousel-track img:hover { filter: grayscale(0%); transform: scale(1.05); }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        /* Estilos del Carrusel */
+        .carousel-container { position: relative; overflow: hidden; border-radius: 1rem; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1); }
+        .slide { display: none; min-height: 600px; background-size: cover; background-position: center; transition: opacity 0.8s ease-in-out; }
+        .slide.active { display: flex; align-items: flex-end; }
+        
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: all 0.3s ease; cursor: pointer; }
+        .dot.active { background: var(--primary); width: 24px; border-radius: 4px; }
 
-        /* QR Section */
-        .qr-feature { background: var(--card); padding: 60px 20px; text-align: center; border-top: 1px solid #333; border-bottom: 1px solid #333; }
-        .qr-box { display: inline-block; padding: 20px; background: white; border-radius: 15px; margin: 20px 0; }
-        .qr-text { font-weight: 700; color: var(--neon); font-size: 1.5rem; text-transform: uppercase; margin-bottom: 10px; }
-
-        /* Hormozi CTA */
-        .cta-container { padding: 80px 20px; text-align: center; }
-        .btn-hormozi { background: var(--neon); color: black; padding: 25px 50px; font-size: 1.6rem; font-weight: 900; text-decoration: none; border-radius: 8px; display: inline-block; text-transform: uppercase; box-shadow: 0 10px 40px rgba(57, 255, 20, 0.3); transition: 0.2s; }
-        .btn-hormozi:hover { transform: translateY(-5px); box-shadow: 0 15px 50px rgba(57, 255, 20, 0.5); }
-        .scarcity { margin-top: 15px; color: #ff4d4d; font-weight: 700; font-size: 0.9rem; }
-
-        /* Secciones de valor */
-        .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; }
-        .value-card { background: #111; padding: 30px; border-radius: 10px; border-left: 5px solid var(--neon); }
-        .value-card h3 { margin-bottom: 10px; font-size: 1.4rem; }
-
-        footer { padding: 40px; text-align: center; border-top: 1px solid #222; color: #555; font-size: 0.8rem; }
+        .brand-name { text-transform: none !important; font-family: ui-sans-serif, system-ui, sans-serif; }
+        input::placeholder { color: #52525b; }
+        
+        .qr-card {
+            background: linear-gradient(145deg, #111, #000);
+            border: 1px solid rgba(0, 255, 0, 0.1);
+        }
     </style>
 </head>
-<body>
+<body class="bg-studio text-gray-100 font-sans antialiased">
 
-    <section class="hero">
-        <h1>GREEN SCREEN <span>MONTERREY</span></h1>
-        <p class="tagline">No es solo una cabina de fotos. Es un estudio de cine portátil para que tus invitados sean los protagonistas.</p>
-        
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400" alt="Space">
-                <img src="https://images.unsplash.com/photo-1514525253361-bee8718a340b?auto=format&fit=crop&w=400" alt="Concert">
-                <img src="https://images.unsplash.com/photo-1519750783826-51dbdbf77a67?auto=format&fit=crop&w=400" alt="City">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400" alt="Space">
-                <img src="https://images.unsplash.com/photo-1514525253361-bee8718a340b?auto=format&fit=crop&w=400" alt="Concert">
-                <img src="https://images.unsplash.com/photo-1519750783826-51dbdbf77a67?auto=format&fit=crop&w=400" alt="City">
+    <header class="fixed w-full z-50 top-0 bg-black/90 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-6 bg-primary shadow-[0_0_10px_rgba(0,255,0,0.3)]"></div>
+                    <div class="flex flex-col leading-tight">
+                        <span class="text-xl font-extrabold tracking-tight text-white brand-name">Green Screen</span>
+                        <span class="text-xl font-extrabold tracking-tight text-white flex items-center brand-name">Monterrey<span class="text-[8px] align-top ml-0.5">TM</span></span>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8 text-[10px] uppercase font-black tracking-[0.25em]">
+                    <a href="#inicio" class="hover:text-primary transition-colors">GSMty</a>
+                    <a href="#promo" class="text-primary hover:text-white transition-colors italic">Agenda ahora</a>
+                    <a href="#contacto" class="hover:text-primary transition-colors border border-white/20 px-4 py-1.5 rounded-full">Contacto</a>
+                </nav>
             </div>
         </div>
+    </header>
 
-        <a href="#contacto" class="btn-hormozi">¡Reserva Tu Fecha!</a>
-        <p class="scarcity">Disponibilidad limitada para Abril y Mayo 2026</p>
-    </section>
+    <main>
+        <section id="inicio" class="pt-28 pb-12 px-4 max-w-7xl mx-auto">
+            <div class="carousel-container shadow-2xl relative">
+                
+                <div class="slide active p-8 md:p-20" 
+                     style="background-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%), url('img/Wallpaper.jpg');">
+                    <div class="max-w-2xl relative z-10">
+                        <h1 class="text-5xl md:text-8xl font-black mb-6 uppercase leading-[0.85] italic tracking-tighter">
+                            Estudio <br><span class="text-primary green-neon-glow">Pop Up</span>
+                        </h1>
+                        <p class="text-zinc-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase italic border-l-2 border-primary pl-4">
+                            Llevamos la producción a tu evento
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="slide p-8 md:p-20" 
+                     style="background-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%), url('img/carrusel_02.webp');">
+                    <div class="max-w-2xl relative z-10">
+                        <h2 class="text-5xl md:text-8xl font-black mb-6 uppercase leading-[0.85] italic tracking-tighter">
+                            Completamente <br><span class="text-primary green-neon-glow">Personalizable</span>
+                        </h2>
+                        <p class="text-zinc-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase italic border-l-2 border-primary pl-4">
+                            Tus fondos, tu marca, tu estilo
+                        </p>
+                    </div>
+                </div>
 
-    <section class="qr-feature">
-        <p class="qr-text">ENTREGA INSTANTÁNEA</p>
-        <h2>Escanea. Descarga. Comparte.</h2>
-        <div class="qr-box">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.greenscreenmty.com" alt="QR Demo" style="width:150px">
-        </div>
-        <p style="max-width: 500px; margin: 0 auto; color: #aaa;">Tus invitados reciben su video 4K en su celular segundos después de grabar. Marketing viral garantizado.</p>
-    </section>
+                <div class="slide p-8 md:p-20" 
+                     style="background-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%), url('img/carrusel_03.webp');">
+                    <div class="max-w-2xl relative z-10">
+                        <h2 class="text-5xl md:text-8xl font-black mb-6 uppercase leading-[0.85] italic tracking-tighter">
+                            Recuerdos en <br><span class="text-primary green-neon-glow">Foto y Video</span>
+                        </h2>
+                        <p class="text-zinc-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase italic border-l-2 border-primary pl-4">
+                            Momentos capturados para siempre
+                        </p>
+                    </div>
+                </div>
 
-    <section class="value-grid">
-        <div class="value-card">
-            <h3>FONDOS ILIMITADOS</h3>
-            <p>Desde la alfombra roja hasta el espacio exterior. Si puedes imaginarlo, lo podemos proyectar.</p>
-        </div>
-        <div class="value-card">
-            <h3>ILUMINACIÓN PRO</h3>
-            <p>Usamos luces LED de estudio para que el recorte sea perfecto, sin bordes verdes.</p>
-        </div>
-        <div class="value-card" id="contacto">
-            <h3>POP-UP STUDIO</h3>
-            <p><strong>10 Abr - 10 May</strong><br>Estamos en el Centro Comercial. Ven a vivir la experiencia completa.</p>
-        </div>
-    </section>
+                <div class="slide p-8 md:p-20" 
+                     style="background-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%), url('img/carrusel_04.webp');">
+                    <div class="max-w-2xl relative z-10">
+                        <h2 class="text-5xl md:text-8xl font-black mb-6 uppercase leading-[0.85] italic tracking-tighter">
+                            Vivir la <br><span class="text-primary green-neon-glow">Experiencia</span>
+                        </h2>
+                        <p class="text-zinc-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase italic border-l-2 border-primary pl-4">
+                            Adéntrate en la magia del evento
+                        </p>
+                    </div>
+                </div>
 
-    <div class="cta-container">
-        <a href="https://wa.me/tunúmero" class="btn-hormozi">Hablemos por WhatsApp</a>
-    </div>
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                    <div class="dot active" onclick="currentSlideTo(0)"></div>
+                    <div class="dot" onclick="currentSlideTo(1)"></div>
+                    <div class="dot" onclick="currentSlideTo(2)"></div>
+                    <div class="dot" onclick="currentSlideTo(3)"></div>
+                </div>
 
-    <footer>
-        &copy; 2025 GREEN SCREEN MONTERREY | DISEÑO Y VIDEO DE ALTO IMPACTO
-    </footer>
+                <div class="absolute bottom-8 right-8 flex gap-3 z-20">
+                    <button onclick="moveSlide(-1)" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:text-black transition-all">
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <button onclick="moveSlide(1)" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:text-black transition-all">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
 
-</body>
-</html>
+        <section class="py-12 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between border-y border-white/5 py-10 gap-8">
+                <div>
+                    <h3 class="text-2xl font-black italic uppercase tracking-tighter text-white">Siempre generando nuevos mundos</h3>
+                    <p class="text-zinc-500 text-xs uppercase tracking-widest mt-2">Síguenos en Instagram para nuestro portafolio diario</p>
+                </div>
+                <a href="https://www.instagram.com/greenscreenmonterrey/" target="_blank" class="flex items-center gap-4 bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest text-white hover:scale-105 transition-transform shadow-lg shadow-purple-500/20">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                    @greenscreenmonterrey
+                </a>
+            </div>
+        </section>
+
+        <section id="promo" class="py-24 bg-zinc-950">
+            <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-black uppercase leading-none mb-8 italic">
+                        Cuéntanos de <br><span class="text-primary">tu evento</span>
+                    </h2>
+                    <p class="text-zinc-500 mb-10 text-lg leading-relaxed">
+                        Cuéntanos de ti para recibir información personalizada y una propuesta a tu medida.
+                    </p>
+                    <div class="flex gap-6 items-center">
+                        <div class="flex flex-col">
+                            <span class="text-primary font-black text-2xl">20%</span>
+                            <span class="text-[9px] uppercase tracking-widest text-zinc-500">Dcto. Primer Llamado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black border border-white/10 p-10 rounded-3xl shadow-2xl">
+                    <form id="google-sheet-form" class="space-y-5">
+                        <input name="nombre" type="text" placeholder="NOMBRE COMPLETO" class="w-full bg-zinc-900 border border-white/10 rounded-xl p-5 text-white text-xs font-bold outline-none focus:border-primary transition-all" required>
+                        <select name="tipo_evento" class="w-full bg-zinc-900 border border-white/10 rounded-xl p-5 text-zinc-500 text-xs font-bold outline-none focus:border-primary transition-all appearance-none" required>
+                            <option value="" disabled selected>CATEGORÍA DEL EVENTO</option>
+                            <option value="Activación de marca">ACTIVACIÓN DE MARCA</option>
+                            <option value="Tus XV">TUS XV</option>
+                            <option value="Boda">BODA</option>
+                            <option value="Evento personal">EVENTO PERSONAL</option>
+                        </select>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input name="email" type="email" placeholder="EMAIL" class="w-full bg-zinc-900 border border-white/10 rounded-xl p-5 text-white text-xs font-bold outline-none focus:border-primary transition-all" required>
+                            <input name="telefono" type="tel" placeholder="WHATSAPP" class="w-full bg-zinc-900 border border-white/10 rounded-xl p-5 text-white text-xs font-bold outline-none focus:border-primary transition-all" required>
+                        </div>
+                        <button id="submit-btn" type="submit" class="w-full btn-green py-6 rounded-xl uppercase tracking-[0.3em] text-xs mt-4">
+                            Registrar
+                        </button>
+                        <div id="form-status" class="text-center text-[10px] font-black uppercase tracking-widest hidden p-3"></div>
+                        
+                        <p class="text-[8px] text-zinc-600 leading-relaxed mt-4 text-center">
+                            * Los datos proporcionados serán utilizados exclusivamente para contactar y cotizar. No serán vendidos a terceros. Podrían ser utilizados para el envío de promociones, siempre con la posibilidad de solicitar la eliminación de la lista.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer
